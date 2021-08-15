@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        
+    <title>Document</title>
+    <link href="{{ asset('/bootstrap.css') }}"  type="text/css" rel="stylesheet">
 </head>
 <body> 
     <div class="container-fluid">
@@ -122,6 +122,10 @@
                
             </div>
 
+        </div>
+        
+        <div class="footer">
+            <br><p>Copyright@2021 by Pakodev</p>
         </div>
     </div>
    
