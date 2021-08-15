@@ -35,7 +35,15 @@ Route::get('/admin/deleteOrder',[AdminController::class,'deleteOrder'])->name('d
 
 Route::get('/admin/deletehistory',[AdminController::class,'deletehistory'])->name('deletehistory');
 Route::get('/admin/cancelOrder',[AdminController::class,'cancelOrder'])->name('cancelOrder');
-
 Route::get('/admin/successOrder',[AdminController::class,'successOrder'])->name('successOrder');
+
+
+
+Route::get('/admin/addstock',[AdminController::class,'addstock'])->name('addstock');
+Route::get('/admin/updateStock',[AdminController::class,'updateStock'])->name('updateStock');
+Route::get('/admin/deleteStocks',[AdminController::class,'deleteStock'])->name('deleteStock');
+Route::get('/admin/addMenu',[AdminController::class,'addMenu'])->name('addMenu');
+Route::get('/admin/deleteMenu',[AdminController::class,'deleteMenu'])->name('deleteMenu');
+
 
 
