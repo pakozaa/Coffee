@@ -32,8 +32,15 @@ class IndexController extends Controller
                     $sum = DB::table('order')->get()->sum('item_price');
                     return view('admin.admin', ['menu' => $menu,'order'=>$order,'sum'=>$sum,'user'=>$row->username]);
                 }
+                else if($row->status=="staff"){
+                    $menu = DB::table('menu')->select('*')->get();
+                    $order = DB::table('order')->select('*')->get();
+                    $sum = DB::table('order')->get()->sum('item_price');
+                    return view('member.member', ['menu' => $menu,'order'=>$order,'sum'=>$sum,'user'=>$row->username]);
+                  
+                }
                 else{
-                    return(view('member.member'));
+                    return(view('index'));
                 }
             }
         }

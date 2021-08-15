@@ -273,4 +273,62 @@ class AdminController extends Controller
         return view('admin.employee',['user'=>$request->user,'owner'=>$owner,'staff'=>$staff]);
     }
     
+    function editMember(Request $request){
+        DB::table('member')
+        ->where('id_user',$request->id)
+        ->update(
+            ['username'=>$request->username,
+            'password'=>$request->password,
+            'contect'=>$request->contect,
+            'status'=>$request->status
+        ]);
+        $owner = DB::table('member')
+        ->select('*')
+        ->where('status','owner')
+        ->get();
+        $staff = DB::table('member')
+        ->select('*')
+        ->where('status','staff')
+        ->get();
+    
+        return view('admin.employee',['user'=>$request->user,'owner'=>$owner,'staff'=>$staff]);
+    }
+    
+    function deleteMember(Request $request){
+        DB::table('member')
+        ->where('id_user',$request->id)
+        ->delete();
+        $owner = DB::table('member')
+        ->select('*')
+        ->where('status','owner')
+        ->get();
+        $staff = DB::table('member')
+        ->select('*')
+        ->where('status','staff')
+        ->get();
+    
+        return view('admin.employee',['user'=>$request->user,'owner'=>$owner,'staff'=>$staff]);
+    }
+    function addMember(Request $request){
+        $contect = ($request->Contect1."<br>".$request->sex."<br>".$request->Contect2);
+        DB::table('member')
+        ->insert(
+            ['id_user'=>NULL,
+            'username'=>$request->username,
+            'password'=>$request->password,
+            'contect'=>$contect,
+            'status'=>$request->status
+        ]);
+        $owner = DB::table('member')
+        ->select('*')
+        ->where('status','owner')
+        ->get();
+        $staff = DB::table('member')
+        ->select('*')
+        ->where('status','staff')
+        ->get();
+    
+        return view('admin.employee',['user'=>$request->user,'owner'=>$owner,'staff'=>$staff]);
+    }
+    
 }

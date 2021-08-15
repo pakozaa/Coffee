@@ -17,7 +17,7 @@
                 <a href="{{route('AdminHistory',['user'=>$user])}}" class='list-group-item list-group-item-action'>ประวัติการขาย</a>
                 <a href="{{route('AdminStock',['user'=>$user])}}" class='list-group-item list-group-item-action'>สต็อกสินค้า</a>
                 <a href="{{route('AdminMember',['user'=>$user])}}" class='list-group-item list-group-item-action'>พนักงาน</a>
-                <a href="#" class='list-group-item list-group-item-action'>ออกจากระบบ</a>
+                <a href="{{route('index')}}" class='list-group-item list-group-item-action'>ออกจากระบบ</a>
             </div>
             <div class="col">
                 <h2>ยอดขายวันนี้ : {{$today}} รวม {{$sum}} บาท</h2>
