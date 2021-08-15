@@ -57,7 +57,7 @@ Route::get('/admin/editMember',[AdminController::class,'editMember'])->name('edi
 Route::get('/member',[MemberController::class,'index'])->name('member');
 
 Route::get('/member/history',[MemberController::class,'memberHistory'])->name('memberHistory');
-Route::get('/member/employee',[MemberController::class,'memberMember'])->name('memberMember');
+Route::get('/member/memberMember',[MemberController::class,'memberMember'])->name('memberMember');
 Route::get('/member/memberStock',[MemberController::class,'memberStock'])->name('memberStock');
 Route::get('/member/pushOrderM',[MemberController::class,'PushOrderM'])->name('PushOrderM');
 Route::get('/member/deleteOrderM',[MemberController::class,'deleteOrderM'])->name('deleteOrderM');

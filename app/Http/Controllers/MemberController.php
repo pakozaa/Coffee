@@ -67,9 +67,35 @@ class MemberController extends Controller
         $order = DB::table('order')->select('*')->get();
         return view('member.member', ['menu' => $menu,'order'=>$order,'sum'=>$sum,'user'=>$request->user]);
     }
-    function memberHistory(Request $request){}
+    function memberHistory(Request $request){
+        $historyList = DB::table('history')->select('*')->get();
+        $today=date("Y-m-d");
+        $tomorrow = date('Y-m-d',strtotime($today . "+1 days"));
+        $sum = DB::table('history')
+        ->where('datetime','>=',$today)
+        ->where('datetime','<',$tomorrow)
+        ->get()
+        ->sum('price');
+        $todayHistory = DB::table('history')
+        ->select("*")
+        ->where('datetime','>=',$today)
+        ->where('datetime','<',$tomorrow)
+        ->get();
+        return view('member.history',['sum'=>$sum,'user'=>$request->user,'historyList'=>$historyList,'todayHistory'=>$todayHistory,'today'=>$today]);
+    }
+    function memberMember(Request $request){
+        $owner = DB::table('member')
+        ->select('*')
+        ->where('status','owner')
+        ->get();
+        $staff = DB::table('member')
+        ->select('*')
+        ->where('status','staff')
+        ->get();
     
-    function memberMember(Request $request){}
+        return view('member.employee',['user'=>$request->user,'owner'=>$owner,'staff'=>$staff]);
+    }
+    
     
     function memberStock(Request $request){
         $item = DB::table('stock')
